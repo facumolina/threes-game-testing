@@ -152,7 +152,7 @@ public class ThreesBoard {
 	
 	public void set_tile(int row, int col, int v){
 		//Set cell in [row,col] position with a given value require
-		if (0<row && row<ROWS && 0<=col && col<COLUMNS){
+		if (0<=row && row<ROWS && 0<=col && col<COLUMNS){
 			elements[row][col].setValue(v);
 		}
 		else
