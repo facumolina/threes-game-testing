@@ -46,9 +46,48 @@ public class ThreesController {
 	
 	//command move up
 	public boolean move_up(){
-		//TODO: Implemente esta rutina, que mueva las piezas del tablero hacia arriba,
-		//      combinando las piezas linderas que cumplan con las reglas especificadas.
- 
+		//clear last movements lists
+		movedRows.clear();
+		movedColumns.clear();
+				
+		if (!board.can_move_up()) 
+			return false;
+		
+		boolean modified = false;
+		for(int j=0; j<ThreesBoard.COLUMNS ; j++) {
+			
+			//can_combine iff the first two tiles are not free and there is no free tile in the middle.
+			boolean can_combine = !board.get_tile(0, j).isFree() &&
+								  !board.get_tile(1, j).isFree() &&
+								  !(board.get_tile(2, j).isFree() && !board.get_tile(3, j).isFree());
+			
+			if(!can_combine) {//move the tile to fill the free spaces
+				int i=0;
+				while(!board.get_tile(i, j).isFree())
+					i++;
+				for(int k=i+1; k<ThreesBoard.COLUMNS ; k++){
+					if(!board.get_tile(k, j).isFree())
+						movedColumns.add(j);
+					board.set_tile(k-1, j, board.get_tile(k, j).getValue());
+				}
+			} else {//combine just once. Here there is no free tile in the middle
+				boolean updated = false;
+				for(int i=0; i < ThreesBoard.ROWS-1 && !updated ; i++){
+					if(board.tiles_can_combine(board.get_tile(i, j), board.get_tile(i+1, j))){
+						//produce first combination
+						ThreesTile t = board.get_tile(i, j).combine_tile(board.get_tile(i+1, j));
+						board.set_tile(i, j, t.getValue());
+						//move anything else to up in the same column
+						for(int k=i+2; k<ThreesBoard.ROWS; k++){
+							board.set_tile(k-1, j, board.get_tile(k, j).getValue());
+						}
+						movedColumns.add(j);
+						board.set_tile(ThreesBoard.ROWS-1,j ,0);//empty the last position
+						modified = true;
+					}
+				}
+			}
+		}
 		return false;
 	}
 	
