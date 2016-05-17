@@ -48,7 +48,7 @@ public class ThreesTile {
 	public boolean is_power_of_two (int v){
 		if (v > 0) {
 			boolean power_of_two = true;
-			for (int i=v; (i <= 1 || !power_of_two); i=i%2){
+			for (int i=v; (i > 1 && power_of_two); i=i/2){
 				if (i % 2 != 0)
 				power_of_two = false;
 			
