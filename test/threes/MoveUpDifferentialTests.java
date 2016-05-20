@@ -15,14 +15,11 @@ public class MoveUpDifferentialTests {
 
 	@Theory
 	public void correctCombinationByEquals(@ThreesBoardGenerator(n=5) ThreesBoard board){
-		ThreesController controller = new ThreesController(board);
-		// Get the columns that allow a combination by equals with the row from which the combination 
-		// is possible, and then get the values that allow the combination.
+		ThreesController controller = new ThreesController (board);
+		// Get the tiles which next tile has the same value and can be combined, 
+		// and then get the values that allow the combination.
 		List<ThreesTile> tilesThatMustBeCombined = determineCombinationalTiles(board);
-		List<Integer> values = new LinkedList<Integer>();
-		for (ThreesTile tile : tilesThatMustBeCombined){
-			values.add(tile.getValue());
-		}
+		List<Integer> values = getValues(tilesThatMustBeCombined);
 		// Move up
 		controller.move_up();
 		// Ensure that for each column with combination by equals, the tiles value
@@ -34,6 +31,24 @@ public class MoveUpDifferentialTests {
 		}	
 	}
 
+	@Theory
+	public void correctCombinationByEqualsAnother(@ThreesBoardGenerator(n=5) ThreesBoard board){
+		AnotherThreesController controller = new AnotherThreesController (board);
+		// Get the tiles which next tile has the same value and can be combined, 
+		// and then get the values that allow the combination.
+		List<ThreesTile> tilesThatMustBeCombined = determineCombinationalTiles(board);
+		List<Integer> values = getValues(tilesThatMustBeCombined);
+		// Move up
+		controller.move_up();
+		// Ensure that for each column with combination by equals, the tiles value
+		// is now the double than before
+		int i =0;
+		for (ThreesTile tile : tilesThatMustBeCombined) {
+			assertThat(tile.getValue(),equalTo(values.get(i)*2));
+			i++;
+		}	
+	}
+	
 	/**
 	 * Returns the tiles in which a combination by equals must be done. 
 	 */
@@ -76,4 +91,14 @@ public class MoveUpDifferentialTests {
 		return t1.getValue()>2 && t1.getValue()==t2.getValue();
 	}
 	
+	/**
+	 * Returns the tiles values
+	 */
+	private List<Integer> getValues(List<ThreesTile> tilesThatMustBeCombined){
+		List<Integer> values = new LinkedList<Integer>();
+		for (ThreesTile tile : tilesThatMustBeCombined){
+			values.add(tile.getValue());
+		}
+		return values;
+	}
 }
