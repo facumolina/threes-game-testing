@@ -87,7 +87,6 @@ public class ThreesController {
 						movedColumns.add(j);
 					board.set_tile(k-1, j, board.get_tile(k, j).getValue());
 					modified = true;
-					board.set_tile(k,j ,0);//empty the current position
 				}
 				board.set_tile(ThreesBoard.ROWS-1,j ,0);//empty the last position
 			} else {//combine just once. Here there is no free tile in the middle
@@ -109,6 +108,7 @@ public class ThreesController {
 				}
 			}
 		}
+		loadNextTileOnColumns(true);
 		return modified;
 	}
 	
@@ -137,7 +137,8 @@ public class ThreesController {
 					if(!board.get_tile(k, j).isFree())
 						movedColumns.add(j);
 					board.set_tile(k+1, j, board.get_tile(k, j).getValue());
-				}			
+				}
+				board.set_tile(0,j ,0);//empty the first position
 			}
 			else{//combine just once. Here there is no free tile in the middle
 				boolean updated = false;
@@ -153,6 +154,7 @@ public class ThreesController {
 						movedColumns.add(j);
 						board.set_tile(0,j ,0);//empty the last position
 						modified = true;
+						updated = true;
 					}
 				}
 			}
