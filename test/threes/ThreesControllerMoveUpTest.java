@@ -43,14 +43,12 @@ public class ThreesControllerMoveUpTest {
 		// [ 0 , 0 , 0 , 0]
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(1, 0).isFree());
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==1);
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==12);
-		assertTrue(threesController.getBoard().get_tile(1, 2).isFree());
 		// Column3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==2);
@@ -61,6 +59,7 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==7);
 	}
 	
 	/**
@@ -93,7 +92,6 @@ public class ThreesControllerMoveUpTest {
 		// [ 0 , 0 , 0 , 0]
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(1, 0).isFree());
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
@@ -107,6 +105,7 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(!threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==9);
 	}
 	
 	/**
@@ -142,7 +141,6 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==1);
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==12);
-		assertTrue(threesController.getBoard().get_tile(1, 1).isFree());
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==2);
@@ -153,6 +151,7 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(!threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));	
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==9);
 	}
 	
 	/**
@@ -192,13 +191,13 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==1);
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==24);
-		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
 		// Moved columns
 		assertTrue(!threesController.getMovedColumns().contains(0));
 		assertTrue(threesController.getMovedColumns().contains(1));
 		assertTrue(!threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));	
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==9);
 	}
 	
 	/**
@@ -238,7 +237,6 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getBoard().get_tile(2, 0).getValue()==1);
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==3);
-		assertTrue(threesController.getBoard().get_tile(1, 1).isFree());
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==3);
 		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
@@ -251,6 +249,7 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(!threesController.getMovedColumns().contains(3));	
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==7);
 	}
 	
 	/**
@@ -285,14 +284,12 @@ public class ThreesControllerMoveUpTest {
 		// [ 0 , 0 , 0 , 0]		
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==3);
-		assertTrue(threesController.getBoard().get_tile(1, 0).isFree());
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==1);
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(1, 2).isFree());
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==6);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==3);
@@ -302,6 +299,7 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(!threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==8);
 	}
 	
 	/**
@@ -335,22 +333,19 @@ public class ThreesControllerMoveUpTest {
 		// [ 0 , 0 , 0 , 0]		
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(1, 0).isFree());
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==12);
-		assertTrue(threesController.getBoard().get_tile(1, 1).isFree());
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==24);
-		assertTrue(threesController.getBoard().get_tile(1, 2).isFree());
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
 		// Moved columns
 		assertTrue(threesController.getMovedColumns().contains(0));
 		assertTrue(threesController.getMovedColumns().contains(1));
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==11);
 	}
 	
 	/**
@@ -382,19 +377,18 @@ public class ThreesControllerMoveUpTest {
 		// [ 0 , 0 , 0 , 0]
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(1, 0).isFree());
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==3);
 		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==1);
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==12);
-		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
 		// Moved columns
 		assertTrue(threesController.getMovedColumns().contains(0));
 		assertTrue(!threesController.getMovedColumns().contains(1));
 		assertTrue(!threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==11);
 	}
 	
 	/**
@@ -427,20 +421,19 @@ public class ThreesControllerMoveUpTest {
 		// [ 0 , 0 , 0 , 0]
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(1, 0).isFree());
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==1);
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==12);
-		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
 		// Moved columns
 		assertTrue(threesController.getMovedColumns().contains(0));
 		assertTrue(threesController.getMovedColumns().contains(1));
 		assertTrue(!threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==10);
 	}
 	
 	/**
@@ -492,6 +485,7 @@ public class ThreesControllerMoveUpTest {
 		// Moved columns
 		assertTrue(threesController.getMovedColumns().isEmpty());
 		assertTrue(!moved);
+		assertTrue(freeCells(threesController.getBoard())==4);
 	}
 	
 	/**
@@ -523,7 +517,6 @@ public class ThreesControllerMoveUpTest {
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==6);
 		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==6);
-		assertTrue(threesController.getBoard().get_tile(2, 0).isFree());
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
@@ -537,6 +530,7 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(!threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==8);
 	}
 	
 	/**
@@ -568,25 +562,22 @@ public class ThreesControllerMoveUpTest {
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(2, 0).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 0).isFree());
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 1).isFree());
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 2).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 2).isFree());
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(2, 3).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 3).isFree());
 		// Moved columns
 		assertTrue(threesController.getMovedColumns().contains(0));
 		assertTrue(threesController.getMovedColumns().contains(1));
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==7);
 	}
 	
 	/**
@@ -619,27 +610,41 @@ public class ThreesControllerMoveUpTest {
 		// Column 0
 		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(2, 0).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 0).isFree());
 		// Column 1
 		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 1).isFree());
 		// Column 2
 		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 2).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 2).isFree());
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(2, 3).getValue()==2);
-		assertTrue(threesController.getBoard().get_tile(3, 3).isFree());
 		// Moved columns
 		assertTrue(threesController.getMovedColumns().contains(0));
 		assertTrue(threesController.getMovedColumns().contains(1));
 		assertTrue(threesController.getMovedColumns().contains(2));
 		assertTrue(threesController.getMovedColumns().contains(3));
 		assertTrue(moved);
+		assertTrue(freeCells(threesController.getBoard())==6);
 	}
+	
+	/**
+	 * Count the free cells of a given board
+	 * @return
+	 */
+	private int freeCells(ThreesBoard board) {
+		int freeCells=0;
+		for (int i=0;i<board.ROWS;i++) {
+			for (int j=0;j<board.COLUMNS;j++) {
+				if (board.get_tile(i, j).isFree()) {
+					freeCells++;
+				}
+			}
+		}
+		return freeCells;
+	}
+	
 }
 
 
