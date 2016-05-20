@@ -35,7 +35,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(1, 3, 2);
 		board.set_tile(3, 3, 2);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 6 , 1 , 12, 1]
 		// [ 0 , 1 , 0 , 2]
@@ -55,6 +55,12 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 3).getValue()==2);
+		// Moved Columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(!threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
 	}
 	
 	/**
@@ -79,7 +85,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(0, 3, 3);
 		board.set_tile(1, 3, 6);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 6 , 0 , 1 , 3]
 		// [ 0 , 0 , 2 , 6]
@@ -95,6 +101,12 @@ public class ThreesControllerMoveUpTest {
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==3);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==6);
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(!threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(!threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
 	}
 	
 	/**
@@ -119,7 +131,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(1, 3, 2);
 		board.set_tile(3, 3, 3);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 3 , 12, 0 , 1]
 		// [ 1 , 0 , 0 , 2]
@@ -135,6 +147,12 @@ public class ThreesControllerMoveUpTest {
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==1);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==2);
 		assertTrue(threesController.getBoard().get_tile(2, 3).getValue()==3);
+		// Moved columns
+		assertTrue(!threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(!threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));	
+		assertTrue(moved);
 	}
 	
 	/**
@@ -159,7 +177,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(0, 3, 12);
 		board.set_tile(1, 3, 12);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 6 , 1 , 0 ,24]
 		// [ 3 , 2 , 0 , 0]
@@ -175,6 +193,12 @@ public class ThreesControllerMoveUpTest {
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==24);
 		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
+		// Moved columns
+		assertTrue(!threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(!threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));	
+		assertTrue(moved);
 	}
 	
 	/**
@@ -202,7 +226,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(0, 3, 3);
 		board.set_tile(1, 3, 1);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 1 , 3 , 3 , 3]
 		// [ 2 , 0 , 2 , 1]
@@ -221,6 +245,12 @@ public class ThreesControllerMoveUpTest {
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==3);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==1);
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(!threesController.getMovedColumns().contains(3));	
+		assertTrue(moved);
 	}
 	
 	/**
@@ -247,7 +277,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(0, 3, 6);
 		board.set_tile(1, 3, 3);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 3 , 1 , 6 , 6]
 		// [ 0 , 2 , 0 , 3]
@@ -266,6 +296,12 @@ public class ThreesControllerMoveUpTest {
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==6);
 		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==3);
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(!threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
 	}
 	
 	/**
@@ -291,7 +327,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(0, 3, 3);
 		board.set_tile(1, 3, 3);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 6 , 12, 24, 6]
 		// [ 0 , 0 , 0 , 0]
@@ -309,6 +345,12 @@ public class ThreesControllerMoveUpTest {
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==6);
 		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
 	}
 	
 	/**
@@ -332,7 +374,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(0, 3, 6);
 		board.set_tile(1, 3, 6);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board
 		// [ 6 , 3 , 0 ,12]
 		// [ 0 , 1 , 0 , 0]
@@ -347,6 +389,12 @@ public class ThreesControllerMoveUpTest {
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==12);
 		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(!threesController.getMovedColumns().contains(1));
+		assertTrue(!threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
 	}
 	
 	/**
@@ -371,7 +419,7 @@ public class ThreesControllerMoveUpTest {
 		board.set_tile(0, 3, 6);
 		board.set_tile(1, 3, 6);
 		ThreesController threesController = new ThreesController(board);
-		threesController.move_up();
+		boolean moved = threesController.move_up();
 		// Expected board:
 		// [ 6 , 1 , 0 ,12]
 		// [ 0 , 2 , 0 , 0]
@@ -387,8 +435,211 @@ public class ThreesControllerMoveUpTest {
 		// Column 3
 		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==12);
 		assertTrue(threesController.getBoard().get_tile(1, 3).isFree());
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(!threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
 	}
 	
+	/**
+	 * Test with a board that cannot be moved
+	 */
+	@Test
+	public void boardNotAffectedByMoveUp() {
+		// Input board:
+		// [ 3 , 3 , 3 , 3]
+		// [ 2 , 2 , 2 , 2]
+		// [ 3 , 3 , 3 , 3]
+		// [ 0 , 0 , 0 , 0]
+		ThreesBoard board = new ThreesBoard();
+		board.set_tile(0, 0, 3);
+		board.set_tile(1, 0, 2);
+		board.set_tile(2, 0, 3);
+		board.set_tile(0, 1, 3);
+		board.set_tile(1, 1, 2);
+		board.set_tile(2, 1, 3);
+		board.set_tile(0, 2, 3);
+		board.set_tile(1, 2, 2);
+		board.set_tile(2, 2, 3);
+		board.set_tile(0, 3, 3);
+		board.set_tile(1, 3, 2);
+		board.set_tile(2, 3, 3);
+		ThreesController threesController = new ThreesController(board);
+		boolean moved = threesController.move_up();
+		// Expected board:
+		// [ 3 , 3 , 3 , 3]
+		// [ 2 , 2 , 2 , 2]
+		// [ 3 , 3 , 3 , 3]
+		// [ 0 , 0 , 0 , 0]
+		// Column 0
+		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==3);
+		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 0).getValue()==3);
+		// Column 1
+		assertTrue(threesController.getBoard().get_tile(0, 1).getValue()==3);
+		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==3);
+		// Column 2
+		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==3);
+		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 2).getValue()==3);
+		// Column 3
+		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==3);
+		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 3).getValue()==3);
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().isEmpty());
+		assertTrue(!moved);
+	}
+	
+	/**
+	 * Test combine by equals in the middle
+	 */
+	@Test
+	public void testCombineByEqualsInTheMiddle() {
+		// Input board:
+		// [ 6 , 0 , 1 , 3]
+		// [ 3 , 0 , 2 , 6]
+		// [ 3 , 0 , 0 , 0]
+		// [ 0 , 0 , 2 , 0]
+		ThreesBoard board = new ThreesBoard();
+		board.set_tile(0, 0, 6);
+		board.set_tile(1, 0, 3);
+		board.set_tile(2, 0, 3);
+		board.set_tile(0, 2, 1);
+		board.set_tile(1, 2, 2);
+		board.set_tile(3, 2, 2);
+		board.set_tile(0, 3, 3);
+		board.set_tile(1, 3, 6);
+		ThreesController threesController = new ThreesController(board);
+		boolean moved = threesController.move_up();
+		// Expected board:
+		// [ 6 , 0 , 1 , 3]
+		// [ 6 , 0 , 2 , 6]
+		// [ 0 , 0 , 2 , 0]
+		// [ 0 , 0 , 0 , 0]
+		// Column 0
+		assertTrue(threesController.getBoard().get_tile(0, 0).getValue()==6);
+		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==6);
+		assertTrue(threesController.getBoard().get_tile(2, 0).isFree());
+		// Column 2
+		assertTrue(threesController.getBoard().get_tile(0, 2).getValue()==1);
+		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 2).getValue()==2);
+		// Column 3
+		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==3);
+		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==6);
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(!threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(!threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
+	}
+	
+	/**
+	 * Test move up without combinations
+	 */
+	@Test
+	public void testCanMoveUpButNoCombination() {
+		// Input board:
+		// [ 0 , 0 , 0 , 0]
+		// [ 0 , 0 , 0 , 0]
+		// [ 1 , 2 , 2 , 1]
+		// [ 2 , 2 , 2 , 2]
+		ThreesBoard board = new ThreesBoard();
+		board.set_tile(2, 0, 1);
+		board.set_tile(3, 0, 2);
+		board.set_tile(2, 1, 2);
+		board.set_tile(3, 1, 2);
+		board.set_tile(2, 2, 2);
+		board.set_tile(3, 2, 2);
+		board.set_tile(2, 3, 1);
+		board.set_tile(3, 3, 2);
+		ThreesController threesController = new ThreesController(board);
+		boolean moved = threesController.move_up();
+		// Expected board:
+		// [ 0 , 0 , 0 , 0]
+		// [ 1 , 2 , 2 , 1]
+		// [ 2 , 2 , 2 , 2]
+		// [ 0 , 0 , 0 , 0]
+		// Column 0
+		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==1);
+		assertTrue(threesController.getBoard().get_tile(2, 0).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 0).isFree());
+		// Column 1
+		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 1).isFree());
+		// Column 2
+		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 2).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 2).isFree());
+		// Column 3
+		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==1);
+		assertTrue(threesController.getBoard().get_tile(2, 3).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 3).isFree());
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
+	}
+	
+	/**
+	 * Test move up without combinations2
+	 */
+	@Test
+	public void testCanMoveUpButNoCombination2() {
+		// Input board:
+		// [ 0 , 0 , 0 , 0]
+		// [ 0 , 0 , 0 , 2]
+		// [ 1 , 2 , 2 , 1]
+		// [ 2 , 2 , 2 , 2]
+		ThreesBoard board = new ThreesBoard();
+		board.set_tile(2, 0, 1);
+		board.set_tile(3, 0, 2);
+		board.set_tile(2, 1, 2);
+		board.set_tile(3, 1, 2);
+		board.set_tile(2, 2, 2);
+		board.set_tile(3, 2, 2);
+		board.set_tile(1, 3, 2);
+		board.set_tile(2, 3, 1);
+		board.set_tile(3, 3, 2);
+		ThreesController threesController = new ThreesController(board);
+		boolean moved = threesController.move_up();
+		// Expected board:
+		// [ 0 , 0 , 0 , 2]
+		// [ 1 , 2 , 2 , 1]
+		// [ 2 , 2 , 2 , 2]
+		// [ 0 , 0 , 0 , 0]
+		// Column 0
+		assertTrue(threesController.getBoard().get_tile(1, 0).getValue()==1);
+		assertTrue(threesController.getBoard().get_tile(2, 0).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 0).isFree());
+		// Column 1
+		assertTrue(threesController.getBoard().get_tile(1, 1).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 1).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 1).isFree());
+		// Column 2
+		assertTrue(threesController.getBoard().get_tile(1, 2).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(2, 2).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 2).isFree());
+		// Column 3
+		assertTrue(threesController.getBoard().get_tile(0, 3).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(1, 3).getValue()==1);
+		assertTrue(threesController.getBoard().get_tile(2, 3).getValue()==2);
+		assertTrue(threesController.getBoard().get_tile(3, 3).isFree());
+		// Moved columns
+		assertTrue(threesController.getMovedColumns().contains(0));
+		assertTrue(threesController.getMovedColumns().contains(1));
+		assertTrue(threesController.getMovedColumns().contains(2));
+		assertTrue(threesController.getMovedColumns().contains(3));
+		assertTrue(moved);
+	}
 }
 
 

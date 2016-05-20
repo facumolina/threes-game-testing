@@ -144,7 +144,7 @@ public class ThreesBoard {
 				can_combine = true;
 		}
 		else{
-			can_combine = (v1==v2);
+			can_combine = (v1==v2)&&(v1!=0);
 		}
 		return can_combine;
 	}

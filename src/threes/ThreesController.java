@@ -2,6 +2,7 @@ package threes;
 
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class ThreesController {
@@ -44,6 +45,22 @@ public class ThreesController {
 		return nextTileValue;
 	}
 	
+	/**
+	 * Get the columns moved in the last movement
+	 */
+	public List<Integer> getMovedColumns() {
+		List<Integer> moved = (List<Integer>)movedColumns.clone();
+		return moved;
+	}
+	
+	/**
+	 * Get the rows moved in the last movement
+	 */
+	public List<Integer> getMovedRows() {
+		List<Integer> moved = (List<Integer>)movedRows.clone();
+		return moved;
+	}
+	
 	//command move up
 	public boolean move_up(){
 		//clear last movements lists
@@ -69,7 +86,10 @@ public class ThreesController {
 					if(!board.get_tile(k, j).isFree())
 						movedColumns.add(j);
 					board.set_tile(k-1, j, board.get_tile(k, j).getValue());
+					modified = true;
+					board.set_tile(k,j ,0);//empty the current position
 				}
+				board.set_tile(ThreesBoard.ROWS-1,j ,0);//empty the last position
 			} else {//combine just once. Here there is no free tile in the middle
 				boolean updated = false;
 				for(int i=0; i < ThreesBoard.ROWS-1 && !updated ; i++){
@@ -83,12 +103,13 @@ public class ThreesController {
 						}
 						movedColumns.add(j);
 						board.set_tile(ThreesBoard.ROWS-1,j ,0);//empty the last position
+						updated = true;
 						modified = true;
 					}
 				}
 			}
 		}
-		return false;
+		return modified;
 	}
 	
 	//command move down
