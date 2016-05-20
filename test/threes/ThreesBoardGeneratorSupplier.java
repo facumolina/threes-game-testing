@@ -27,6 +27,10 @@ public class ThreesBoardGeneratorSupplier extends ParameterSupplier {
 					}
 				}
 			}
+			// Ensure that at least one column has equals consecutive cells
+			int column = board.getRandom(4);
+			board.set_tile(0, column, 6);
+			board.set_tile(1, column, 6);
 			values.add(PotentialAssignment.forValue("board", board));
 		}
 		return values;
